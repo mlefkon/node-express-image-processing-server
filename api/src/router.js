@@ -14,13 +14,13 @@ function filename(request, file, callback) {
     callback(null, file.originalname);
 }
 
+const storage = multer.diskStorage({ destination: 'api/uploads/', filename: filename});
+const upload = multer( {fileFilter: fileFilter, storage: storage })
+const router = Router();
 const photoPath = path.resolve(__dirname, '../../client/photo-viewer.html');
 router.get('/photo-viewer', (req, res) => {
     res.sendFile(photoPath);
 })
-const storage = multer.diskStorage({ destination: 'api/uploads/', filename: filename});
-const upload = multer( {fileFilter: fileFilter, storage: storage })
-const router = Router();
 router.post('/upload', upload.single('photo'), (req, res) => {
     if (req.fileValidationError) {
         return res.status(400)
