@@ -23,7 +23,10 @@ const fileFilter = (request, file, callback) => {
         callback(null, true);
     }
 }
-const upload = multer({ fileFilter: fileFilter, storage: storage })
+const upload = multer({ 
+    fileFilter: fileFilter, 
+    storage 
+})
 router.post('/upload', upload.single('photo'), async (req, res) => {
     if (req.fileValidationError) return res.status(400).json({ error: req.fileValidationError });
     try {
