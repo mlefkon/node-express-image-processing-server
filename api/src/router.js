@@ -13,7 +13,7 @@ const filename = (request, file, callback) => {
 
 const storage = multer.diskStorage({ 
     destination: 'api/uploads/', 
-    filename: filename
+    filename
 });
 function fileFilter(request, file, callback) {
     if (file.mimetype != 'image/png') {
