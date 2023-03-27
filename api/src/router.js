@@ -26,15 +26,14 @@ router.post('/upload', upload.single('photo'), async (req, res) => {
     if (req.fileValidationError) {
         return res.status(400)
                   .json( {error: req.fileValidationError} );
-    } else {
-        try {
-            await imageProcessor( request.file.filename );
-        } catch (error) {
-            
-        }
-        return res.status(201)
-                  .json( {success: true} );
     }
+    try {
+        await imageProcessor( request.file.filename );
+    } catch (error) {
+        
+    }
+    return res.status(201)
+                .json( {success: true} );
 })
 
 
