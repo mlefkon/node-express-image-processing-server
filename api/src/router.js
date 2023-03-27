@@ -29,8 +29,8 @@ const upload = multer({
 })
 router.post('/upload', upload.single('photo'), async (req, res) => {
     if (req.fileValidationError) return res.status(400).json({ error: req.fileValidationError });
-    try {
-        await imageProcessor(request.file.filename);
+    try {      
+        await imageProcessor(req.file.filename);
     } catch (error) {
 
     }
