@@ -9,11 +9,11 @@ const uploadPathResolver = (filename) => {
 }
 
 const imageProcessor = (filename) => {
-    let resizeWorkerFinished = false;
-    let monochromeWorkerFinished = false;
     const sourcePath = uploadPathResolver(filename);
     const resizedDestination = uploadPathResolver('resized-' + filename);
     const monochromeDestination = uploadPathResolver('monochrome-' + filename);
+    let resizeWorkerFinished = false;
+    let monochromeWorkerFinished = false;
     return new Promise( (resolve, reject) => {
         if (isMainThread) {
             try {
