@@ -7,7 +7,7 @@ const photoPath = path.resolve(__dirname, '../../client/photo-viewer.html');
 
 const router = Router();
 
-function filename(request, file, callback) {
+const filename = (request, file, callback) => {
     callback(null, file.originalname);
 }
 
